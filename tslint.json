@@ -1,6 +1,7 @@
 {
-  "extends": ["tslint-config-blvd", "tslint-config-blvd/react"],
+  "extends": ["tslint:recommended", "tslint-config-blvd/react"],
   "rules": {
-    "linebreak-style": [false]
+    "linebreak-style": [false],
+    "semicolon": false
   }
 }

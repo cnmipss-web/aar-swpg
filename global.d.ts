@@ -1,3 +1,24 @@
+// graphql query strings
+declare const graphql: (query: TemplateStringsArray) => void
+
+interface CSSModule {
+  [className: string]: string
+}
+
+// type shims for CSS modules
+
+declare module '*.module.scss' {
+  const cssModule: CSSModule
+  export = cssModule
+}
+
+declare module '*.module.css' {
+  const cssModule: CSSModule
+  export = cssModule
+}
+
+// Data model types
+
 declare interface ActAspirePerformance {
     subject: ActAspireSubject
     year: number
@@ -12,7 +33,7 @@ declare enum ActAspireSubject {
     science,
 }
 
-declare interface DistrictActAspirePerformance extends ActAspirePerformance {}
+declare type DistrictActAspirePerformance = ActAspirePerformance;
 
 declare interface SchoolActAspirePerformance extends ActAspirePerformance {
     schoolName: string
@@ -44,7 +65,7 @@ declare interface SBAPerformance {
     gradeLevels: GradeLevelSBAPerformance[]
 }
 
-declare interface DistrictSBAPerformance extends SBAPerformance {}
+declare type DistrictSBAPerformance = SBAPerformance;
 
 declare interface SchoolSBAPerformance extends SBAPerformance {
     school: string

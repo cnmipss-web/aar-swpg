@@ -83,3 +83,16 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     })
   })
 }
+
+exports.onCreatePage = ({ page, boundActionCreators }) => {
+    const { createPage, deletePage } = boundActionCreators;
+    return new Promise(resolve => {
+        page.context = {
+            ...page.context,
+            csvFile: "allTestCSV",
+        };
+        createPage(page);
+        console.log(page.context)
+        resolve();
+    });
+  };

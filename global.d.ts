@@ -19,6 +19,7 @@ declare module '*.module.css' {
 
 // Data model types
 
+type SchoolSubject = 'English' | 'Math' | 'Writing' | 'Reading' | 'Science';
 declare interface ActAspirePerformance {
     subject: ActAspireSubject
     year: number

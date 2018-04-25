@@ -6,7 +6,7 @@ const siteUrl = 'https://www.cnmipss.org/academic-achievement-reports/';
 
 module.exports = {
   siteMetadata: {
-    title: 'Academic Achievement Report',
+    title: 'Academic Achievement Report SY 2016-2017',
     description: '',
     siteUrl,
     author: {

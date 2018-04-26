@@ -8,14 +8,13 @@ import { subjectList } from './constants';
 
 export default ({ data }) => (
     <div>
-        <h3>Overall Results</h3>
+        <h4>Results for English Language Learners (ELLs)</h4>
         {subjectList.map(subject =>
             <div key={uuidv4()}>
-                <h4>
-                    Act Aspire Summative Results: {subject} Proficiency by Grade
-                </h4>
-                <ProficiencyByGradeTable type="Overall" data={data} subject={subject} />
-                <CohortTrendTable data={data} subject={subject} />
+                <h5>
+                    Act Aspire Summative Results for ELL Subgroup: {subject} Proficiency by Grade
+                </h5>
+                <ProficiencyByGradeTable type="Iep" data={data} subject={subject} />
             </div>
         )}
     </div>

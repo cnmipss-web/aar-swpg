@@ -1,20 +1,4 @@
-import * as React from 'react'
-const uuidv4 = require('uuid/v4');
-
-import OverallResults from './OverallResults';
-import IEPResults from './IEPResults';
-import ELLResults from './ELLResults';
-
-export default ({ data }) => (
-    <section>
-        <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
-        <OverallResults data={data} />
-        <IEPResults data={data} />
-        <ELLResults data={data} />
-    </section>
-    );
-
-export const query = graphql`
+export const actAspireQuery = graphql`
     fragment actAspireData on RootQueryType {
         allAaMathOverallCsv {
             edges {
@@ -216,6 +200,58 @@ export const query = graphql`
         }
 
         allAaWritingIepCsv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                }
+            }
+        }
+    }
+`;
+
+export const NMCPlacementQuery = graphql`
+    fragment NMCPlacementData on RootQueryType {
+        allNmcMath2017Csv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                }
+            }
+        }
+
+        allNmcReading2017Csv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                }
+            }
+        }
+
+        allNmcWriting2017Csv {
             edges {
                 node {
                     field1

@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { transparentize } from 'polished'
 import Link from 'gatsby-link'
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 import { heights, dimensions, colors } from '../../styles/variables';
 import { onEvent } from '../../styles/mixins';
@@ -36,6 +36,15 @@ interface HeaderProps {
   title: string
 }
 
+interface Nav {
+    id: number,
+    name: string,
+}
+
+interface WPPage {
+    link: string,
+}
+
 class Header extends React.Component<HeaderProps> {
 
     private domain = 'http://localhost:80';
@@ -63,7 +72,7 @@ class Header extends React.Component<HeaderProps> {
     }
 
     private async fetchHeaderContent() {
-        const navSections = await axios.get(`${this.domain}/wp-json/wp/v2/nav/`);
+        const navSections: AxiosResponse<Nav[]> = await axios.get(`${this.domain}/wp-json/wp/v2/nav/`);
 
         const headerLinks = await Promise.all(
             navSections.data.map(this.getPages)
@@ -72,14 +81,14 @@ class Header extends React.Component<HeaderProps> {
         this.setState({headerLinks});
     }
 
-    private async getPages(navSection) {
-        const pages = await axios.get(
+    private async getPages(navSection: Nav) {
+        const pages: AxiosResponse<WPPage[]> = await axios.get(
             `${this.domain}/wp-json/wp/v2/pages/?nav=${navSection.id}&status=publish&per_page=100`
         );
 
         return {
             navSection,
-            pages
+            pages: pages.data
         };
     }
 }

@@ -55,7 +55,7 @@ function dataCellFn(rowData: Node) {
     return (field: string, i: number) => {
         const data = rowData[field];
         if ( i === 0) {
-            return <RowHeader>{data}</RowHeader>;
+            return <RowHeader key={uuidv4()}>{data}</RowHeader>;
         } else {
             return <td key={uuidv4()}>{data}</td>;
         }

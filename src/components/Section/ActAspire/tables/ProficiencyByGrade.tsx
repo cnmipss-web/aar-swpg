@@ -2,6 +2,12 @@ import * as React from 'react'
 import Link from 'gatsby-link'
 const uuidv4 = require('uuid/v4');
 
+import {
+    tableHeaders,
+    tableDataRow,
+    RowHeader
+} from '../../../AccessibleTable';
+
 import { SchoolSubject } from '../constants';
 
 declare interface Props {
@@ -27,37 +33,34 @@ declare interface Node {
 }
 
 const SubjectOverallTable: React.SFC<Props> = ({data, subject, type}) => {
-    console.log(data);
     const dataField = `allAa${subject}${type}Csv`;
     const { [dataField]: { edges } } = data;
-    const [ headers, ...rows ] = edges;
+    const [ headers, ...rows ]: Edge[] = edges;
     return (
         <table>
             <caption>
                 Act Aspire Overall Results for {subject}
             </caption>
             <thead>
-                <tr>
-                    {Object.keys((headers.node)).map(key => {
-                        return <th scope="col" key={uuidv4()}>{headers.node[key]}</th>
-                    })}
-                </tr>
+                {tableHeaders(headers)}
             </thead>
             <tbody>
-                {rows.map(({ node: row}) => {
-                    return (
-                    <tr key={uuidv4()}>
-                        {Object.keys(row).map(key => {
-                            return <td key={uuidv4()}>
-                                {row[key]}
-                            </td>
-                        })}
-                    </tr>
-                    );
-                })}
+                {rows.map(tableDataRow(dataCellFn))}
             </tbody>
         </table>
     );
 }
+
+function dataCellFn(rowData: Node) {
+    return (field: string, i: number) => {
+        const data = rowData[field];
+        if ( i === 0) {
+            return <RowHeader>{data}</RowHeader>;
+        } else {
+            return <td key={uuidv4()}>{data}</td>;
+        }
+    }
+}
+
 
 export default SubjectOverallTable;

@@ -2,9 +2,19 @@ import * as React from 'react'
 import Link from 'gatsby-link'
 const uuidv4 = require('uuid/v4');
 
+import {
+    tableHeaders,
+    tableDataRow,
+    RowHeader
+} from '../../../AccessibleTable';
+
 declare interface Props {
     subject: 'Writing' | 'Math' | 'Reading',
-    data: any,
+    data: {
+        [key: string]: {
+            edges: Edge[]
+        }
+    },
     year: number,
 }
 
@@ -27,32 +37,19 @@ declare interface Node {
 const SubjectOverallTable: React.SFC<Props> = ({data, subject, year}) => {
     const dataField = `allNmc${subject}${year}Csv`;
     const { [dataField]: { edges } } = data;
-    const [ headers, ...rows ] = edges;
+    const [ headers, ...rows ]: Edge[] = edges;
     const {node: {field2: cohort}} = rows.slice(-1)[0];
+    const dataRows = rows.slice(0, rows.length - 2);
     return (
         <table>
             <caption>
                 {year} {cohort} NMC Placement Test Results for {subject}
             </caption>
             <thead>
-                <tr>
-                    {Object.keys((headers.node)).map(key => {
-                        return <th scope="col" key={uuidv4()}>{headers.node[key]}</th>
-                    })}
-                </tr>
+                {tableHeaders(headers)}
             </thead>
             <tbody>
-                {rows.slice(0, rows.length-2).map(({ node: row}) => {
-                    return (
-                    <tr key={uuidv4()}>
-                        {Object.keys(row).map(key => {
-                            return <td key={uuidv4()}>
-                                {row[key]}
-                            </td>
-                        })}
-                    </tr>
-                    );
-                })}
+                {dataRows.map(tableDataRow())}
             </tbody>
         </table>
     );

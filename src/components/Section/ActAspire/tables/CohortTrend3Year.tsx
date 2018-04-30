@@ -2,6 +2,12 @@ import * as React from 'react'
 import Link from 'gatsby-link'
 const uuidv4 = require('uuid/v4');
 
+import {
+    tableHeaders,
+    tableDataRow,
+    RowHeader
+} from '../../../AccessibleTable';
+
 import { SchoolSubject } from '../constants';
 
 declare interface Props {
@@ -26,34 +32,19 @@ declare interface Node {
 }
 
 const CohortTrendTable: React.SFC<Props> = ({data, subject}) => {
-    console.log(data);
     const dataField = `allAa${subject}Cohort3YrCsv`;
     const { [dataField]: { edges } } = data;
-    const [ headers, ...rows ] = edges;
+    const [ headers, ...rows ]: Edge[] = edges;
     return (
         <table>
             <caption>
                 Three Year Cohort Trend: Students Meeting Exceeding or Ready Benchmarks for {subject}
             </caption>
             <thead>
-                <tr>
-                    {Object.keys((headers.node)).map(key => {
-                        return <th scope="col" key={uuidv4()}>{headers.node[key]}</th>
-                    })}
-                </tr>
+                {tableHeaders(headers)}
             </thead>
             <tbody>
-                {rows.map(({ node: row}) => {
-                    return (
-                    <tr key={uuidv4()}>
-                        {Object.keys(row).map(key => {
-                            return <td key={uuidv4()}>
-                                {row[key]}
-                            </td>
-                        })}
-                    </tr>
-                    );
-                })}
+                {rows.map(tableDataRow())}
             </tbody>
         </table>
     );

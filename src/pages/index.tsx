@@ -29,34 +29,61 @@ const StyledContainer = styled(Container)`
 
 
 export default ({data, context}) => (
-  <Page>
-    <StyledContainer>
-        <Row>
-            <Col>
-                <h1>{data.site.siteMetadata.title}</h1>
-                <ResultsSection section="ActAspire" data={data}>
-                    <AAOverallResults data={data} />
-                    <AAIEPResults data={data} />
-                </ResultsSection>
-                <ResultsSection section="SBA" data={data}>
-                    <div />
-                </ResultsSection>
-                <ResultsSection section="AlternateAssessment" data={data}>
-                    <div />
-                </ResultsSection>
-                <ResultsSection section="WIDA" data={data}>
-                    <div />
-                </ResultsSection>
-                <ResultsSection section="NMCPlacement" data={data}>
-                    <NMCSubjectResults data={data} subject="Reading" year={2017} />
-                    <NMCSubjectResults data={data} subject="Writing" year={2017} />
-                    <NMCSubjectResults data={data} subject="Math" year={2017} />
-                </ResultsSection>
-            </Col>
-        </Row>
-    </StyledContainer>
-  </Page>
-)
+    <Page>
+        <StyledContainer>
+            <Row>
+                <Col>
+                    <h1>{data.site.siteMetadata.title}</h1>
+                    <ResultsSection
+                        section="ActAspire"
+                        data={data}
+                    >
+                        <AAOverallResults data={data} />
+                        <AAIEPResults data={data} />
+                    </ResultsSection>
+                    <ResultsSection
+                        section="SBA"
+                        data={data}
+                    >
+                        <div />
+                    </ResultsSection>
+                    <ResultsSection
+                        section="AlternateAssessment"
+                        data={data}
+                    >
+                        <div />
+                    </ResultsSection>
+                    <ResultsSection
+                        section="WIDA"
+                        data={data}
+                    >
+                        <div />
+                    </ResultsSection>
+                    <ResultsSection
+                        section="NMCPlacement"
+                        data={data}
+                    >
+                        <NMCSubjectResults
+                            subject="Reading"
+                            year={2017}
+                            data={data}
+                        />
+                        <NMCSubjectResults
+                            subject="Writing"
+                            year={2017}
+                            data={data}
+                        />
+                        <NMCSubjectResults
+                            subject="Math"
+                            year={2017}
+                            data={data}
+                        />
+                    </ResultsSection>
+                </Col>
+            </Row>
+        </StyledContainer>
+    </Page>
+);
 
 export const query = graphql`
     query IndexQuery {

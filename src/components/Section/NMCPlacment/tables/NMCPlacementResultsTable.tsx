@@ -1,11 +1,11 @@
 import * as React from 'react'
-import Link from 'gatsby-link'
 const uuidv4 = require('uuid/v4');
 
 import {
     tableHeaders,
     tableDataRow,
-    RowHeader
+    RowHeader,
+    StyledTable
 } from '../../../AccessibleTable';
 
 declare interface Props {
@@ -41,7 +41,7 @@ const SubjectOverallTable: React.SFC<Props> = ({data, subject, year}) => {
     const {node: {field2: cohort}} = rows.slice(-1)[0];
     const dataRows = rows.slice(0, rows.length - 2);
     return (
-        <table>
+        <StyledTable>
             <caption>
                 {year} {cohort} NMC Placement Test Results for {subject}
             </caption>
@@ -51,7 +51,7 @@ const SubjectOverallTable: React.SFC<Props> = ({data, subject, year}) => {
             <tbody>
                 {dataRows.map(tableDataRow())}
             </tbody>
-        </table>
+        </StyledTable>
     );
 }
 

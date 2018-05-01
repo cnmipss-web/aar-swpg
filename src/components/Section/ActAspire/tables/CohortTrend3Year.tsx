@@ -1,11 +1,11 @@
 import * as React from 'react'
-import Link from 'gatsby-link'
 const uuidv4 = require('uuid/v4');
 
 import {
     tableHeaders,
     tableDataRow,
-    RowHeader
+    RowHeader,
+    StyledTable
 } from '../../../AccessibleTable';
 
 import { SchoolSubject } from '../constants';
@@ -36,7 +36,7 @@ const CohortTrendTable: React.SFC<Props> = ({data, subject}) => {
     const { [dataField]: { edges } } = data;
     const [ headers, ...rows ]: Edge[] = edges;
     return (
-        <table>
+        <StyledTable>
             <caption>
                 Three Year Cohort Trend: Students Meeting Exceeding or Ready Benchmarks for {subject}
             </caption>
@@ -46,7 +46,7 @@ const CohortTrendTable: React.SFC<Props> = ({data, subject}) => {
             <tbody>
                 {rows.map(tableDataRow())}
             </tbody>
-        </table>
+        </StyledTable>
     );
 }
 

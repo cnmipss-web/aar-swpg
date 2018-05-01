@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.css';
+import '../styles/normalize';
 
 import Header from '../components/Header'
 import LayoutRoot from '../components/LayoutRoot'

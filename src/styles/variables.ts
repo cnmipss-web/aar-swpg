@@ -8,11 +8,12 @@ export const colors = {
   warning: '#ec1818',
   ui: {
     bright: '#e0d6eb',
-    light: '#f5f3f7',
+    light: '#ddd',
     whisper: '#fbfafc'
   },
   code: '#fcf6f0',
   gray: {
+    text: '#404040',
     dark: 'hsla(270, 17.119554496%, 0%, 0.92)',
     copy: 'hsla(270, 15.797828016000002%, 0%, 0.88)',
     calm: 'rgba(0, 0, 0, 0.54)'
@@ -55,11 +56,15 @@ export const dimensions = {
     regular: 16,
     large: 18
   },
-  headingSizes: {
-    h1: 2.441,
-    h2: 1.953,
-    h3: 1.563,
-    h4: 1.25
+  headings: {
+      sizes: {
+          h1: 2,
+          h2: 1.85,
+          h3: 1.70,
+          h4: 1.55,
+          h5: 1.40,
+          h6: 1.35
+      }
   },
   lineHeight: {
     regular: 1.45,

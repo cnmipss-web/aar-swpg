@@ -1,11 +1,12 @@
 import * as React from 'react'
-import Link from 'gatsby-link'
+import styled from 'styled-components';
 const uuidv4 = require('uuid/v4');
 
 import {
     tableHeaders,
     tableDataRow,
-    RowHeader
+    RowHeader,
+    StyledTable
 } from '../../../AccessibleTable';
 
 import { SchoolSubject } from '../constants';
@@ -37,7 +38,7 @@ const SubjectOverallTable: React.SFC<Props> = ({data, subject, type}) => {
     const { [dataField]: { edges } } = data;
     const [ headers, ...rows ]: Edge[] = edges;
     return (
-        <table>
+        <StyledTable>
             <caption>
                 Act Aspire Overall Results for {subject}
             </caption>
@@ -47,7 +48,7 @@ const SubjectOverallTable: React.SFC<Props> = ({data, subject, type}) => {
             <tbody>
                 {rows.map(tableDataRow(dataCellFn))}
             </tbody>
-        </table>
+        </StyledTable>
     );
 }
 

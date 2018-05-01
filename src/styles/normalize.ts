@@ -32,7 +32,7 @@ injectGlobal`
     overflow-x: hidden;
     overflow-y: scroll;
     font-family: ${fonts.sansSerif};
-    color: ${colors.black};
+    color: ${colors.gray.text};
     background-color: ${colors.white};
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -67,7 +67,6 @@ injectGlobal`
     width: 100%;
     margin-bottom: 1rem;
     border: 1px solid ${colors.ui.light};
-    font-size: 85%;
     border-collapse: collapse;
   }
 
@@ -81,46 +80,55 @@ injectGlobal`
     text-align: left;
   }
 
-  tbody {
-    tr {
-      &:nth-child(odd) {
-        td {
-          background-color: ${colors.ui.whisper};
-        }
-        tr {
-          background-color: ${colors.ui.whisper};
-        }
-      }
-    }
-  }
-
   h1, h2, h3, h4, h5, h6 {
-    margin-top: 1.414rem;
-    margin-bottom: .5rem;
-    color: ${colors.black};
+    margin: 1rem 0rem;
+    color: ${colors.gray.text};
     font-weight: 600;
     line-height: ${dimensions.lineHeight.heading};
     text-rendering: optimizeLegibility;
-  }
+
+    strong, em {
+        font-size: inherit;
+        font-weight: inherit;
+    }
+
+    em {
+        font-style: italic;
+    }
+}
 
   h1 {
-    margin-top: 0;
-    font-size: ${dimensions.headingSizes.h1}rem;
+    color: ${colors.darkBlue};
+    font-size: ${dimensions.headings.sizes.h1}rem;
   }
 
   h2 {
-    font-size: ${dimensions.headingSizes.h2}rem;
+    font-size: ${dimensions.headings.sizes.h2}rem;
+    padding-left: 1rem;
   }
 
   h3 {
-    font-size: ${dimensions.headingSizes.h3}rem;
+    font-size: ${dimensions.headings.sizes.h3}rem;
+    padding-left: 2rem;
   }
 
-  h4, h5, h6 {
-    font-size: ${dimensions.headingSizes.h4}rem;
+  h4 {
+    font-size: ${dimensions.headings.sizes.h4}rem;
+    padding-left: 3rem;
+  }
+
+  h5 {
+    font-size: ${dimensions.headings.sizes.h5}rem;
+    padding-left: 4rem;
+  }
+
+  h6 {
+    font-size: ${dimensions.headings.sizes.h6}rem;
+    padding-left: 5rem;
   }
 
   p {
+    font-family: serif;
     margin-top: 0;
     margin-bottom: 1rem;
   }
@@ -133,7 +141,12 @@ injectGlobal`
   ol,
   dl {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+  }
+
+  li {
+      margin-bottom: 1rem;
+      font-family: serif;
   }
 
   dt {

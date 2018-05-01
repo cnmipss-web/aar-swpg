@@ -1,6 +1,43 @@
 import * as React from 'react'
-import Link from 'gatsby-link'
+import styled from 'styled-components';
+import {lighten} from 'polished';
 const uuidv4 = require('uuid/v4');
+
+import { colors } from '../styles/variables';
+
+export const StyledTable = styled.table`
+
+    caption {
+        caption-side: top;
+        text-align: center;
+        font-family: serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: inherit;
+    }
+
+    th[scope="col"] {
+        font-family: sans-serif;
+        text-align: center;
+    }
+
+    td {
+        font-family: serif;
+        text-align: center;
+    }
+
+    tr {
+        border: 1px solid #ccc;
+
+        &:nth-of-type(odd) {
+            background-color: white;
+        }
+
+        &:nth-of-type(even) {
+            background-color: ${lighten(0.35)(colors.gold.light)};
+        }
+    }
+`;
 
 declare interface Edge {
     node: any

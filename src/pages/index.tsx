@@ -34,6 +34,10 @@ export default ({data, context}) => (
             <Row>
                 <Col>
                     <h1>{data.site.siteMetadata.title}</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col xs="12" md={{size: 10, offset: 1}}>
                     <ResultsSection
                         section="ActAspire"
                         data={data}

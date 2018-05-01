@@ -23,6 +23,7 @@ const StyledImg = styled.img`
 const StyledText = styled.p`
     color: ${colors.gray.dark};
     font-weight: 500;
+    font-family: sans-serif;
     text-align: center;
 
     display: flex;

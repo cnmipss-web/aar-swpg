@@ -40,6 +40,11 @@ const StyledNavbar = styled(Navbar)`
     width: auto;
     height: auto;
     z-index: 100;
+
+    li {
+        margin: 0;
+        font-family: sans-serif;
+    }
 `;
 
 const StyledNavbarToggler = styled(NavbarToggler)`

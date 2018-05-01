@@ -27,6 +27,7 @@ const Section: React.SFC<SectionProps> = ({ data, section, children }) => (
     <section>
         <div dangerouslySetInnerHTML={{__html: getMarkDownContent(data, section) }} />
         {children}
+        <hr />
     </section>
 );
 

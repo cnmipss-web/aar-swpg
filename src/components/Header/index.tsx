@@ -167,7 +167,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         console.log('State', this.state);
         return (
             <StyledHeader>
-                <Banner />
+                <Banner searchAction={`${this.domain}/`}/>
 
                 <StyledNavbar
                     className="container-fluid"

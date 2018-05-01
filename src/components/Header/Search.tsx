@@ -1,10 +1,12 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponentClass } from 'styled-components';
+
+import { Components } from '../../../typings';
 
 import {
     Form,
     Button
-} from 'reactstrap'
+} from 'reactstrap';
 import { breakpoints, colors } from '../../styles/variables';
 import { onEvent, media } from '../../styles/mixins';
 
@@ -13,7 +15,7 @@ declare interface SearchProps {
     action: string
 }
 
-const StyledBannerForm = styled(Form)`
+const StyledBannerForm: Components.StyledForm = styled(Form)`
     align-items: center;
     display: none;
     flex-direction: row;
@@ -25,12 +27,12 @@ const StyledBannerForm = styled(Form)`
     `}
 `;
 
-const StyledNavForm = styled(Form)`
+const StyledNavForm: Components.StyledForm = styled(Form)`
     height: 34px;
     ${media.md`display: none`}
 `;
 
-const StyledNavButton = styled(Button)`
+const StyledNavButton: Components.StyledButton = styled(Button)`
     background-color: ${colors.gold.normal};
     color: ${colors.darkBlue};
     margin-left: 5px;
@@ -42,7 +44,7 @@ const StyledNavButton = styled(Button)`
     }
 `;
 
-const StyledBannerButton = styled(StyledNavButton)`
+const StyledBannerButton: Components.StyledButton = styled(StyledNavButton)`
     background-color: ${colors.blue};
     color: ${colors.gold.light};
 `;

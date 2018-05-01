@@ -39,7 +39,11 @@ const StyledText = styled.p`
     }
 `;
 
-const BannerComponent: React.SFC = (props) => (
+declare interface BannerProps {
+    searchAction: string
+}
+
+const BannerComponent: React.SFC<BannerProps> = (props) => (
     <Container>
         <Row>
             <Col xs="12" lg="6">
@@ -55,8 +59,10 @@ const BannerComponent: React.SFC = (props) => (
                 </StyledText>
             </Col>
             <Col xs="0" md="6" lg="4">
-                <SearchForm location="header" />
-                {/* <?php cnmi_search_form('header'); ?> */}
+                <SearchForm
+                    location="header"
+                    action={props.searchAction}
+                />
             </Col>
         </Row>
     </Container>

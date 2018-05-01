@@ -20,9 +20,11 @@ import { heights, dimensions, colors, breakpoints } from '../../styles/variables
 import { onEvent, media } from '../../styles/mixins';
 
 import Dropdown from './Dropdown';
+import Banner from './Banner';
+import SearchForm from './Search';
 
 const StyledHeader = styled.header`
-`
+`;
 
 const StyledNavbar = styled(Navbar)`
     background-color: ${colors.blue};
@@ -114,12 +116,7 @@ const NavbarHeader = styled.div`
     }
 `;
 
-const StyledImg = styled.img`
-    width: 100%;
-    height: auto;
-    min-height: 75px;
-    min-width: 400px;
-`;
+
 
 interface HeaderProps {
   title: string
@@ -147,7 +144,7 @@ interface HeaderState {
 class Header extends React.Component<HeaderProps, HeaderState> {
 
     private domain = 'http://localhost:80';
-    private headerImage = 'http://www.cnmipss.org/wp-content/uploads/2015/04/PSSMainBanner.jpg';
+
 
     constructor(props) {
         super(props);
@@ -170,26 +167,16 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         console.log('State', this.state);
         return (
             <StyledHeader>
-                <div className="site-branding container">
-                    <div className="row">
-                        <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-                            <a href="/">
-                                <p className="sr-only">
-                                    CNMI PSS District Website
-                                </p>
-                                <StyledImg
-                                    src={this.headerImage}
-                                    alt=""
-                                />
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <Banner />
 
-                <StyledNavbar className="container-fluid">
-                    <NavbarHeader
-                    >
-                        <div />
+                <StyledNavbar
+                    className="container-fluid"
+                >
+                    <NavbarHeader>
+                        <SearchForm
+                            action={`${this.domain}/`}
+                            location="nav"
+                        />
                         <StyledNavbarToggler
                             onClick={this.toggle}
                         >
@@ -204,10 +191,10 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                         isOpen={this.state.isOpen}
                         navbar
                     >
-                        <div className="navbar-header">
-                            {/* <?php cnmi_search_form('nav'); ?> */}
-                        </div>
-                        <NavLinks role="menu" navbar>
+                        <NavLinks
+                            role="menu"
+                            navbar
+                        >
                             <NavItem>
                                 <a href="/news"> PSS News </a>
                             </NavItem>

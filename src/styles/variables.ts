@@ -17,8 +17,13 @@ export const colors = {
     copy: 'hsla(270, 15.797828016000002%, 0%, 0.88)',
     calm: 'rgba(0, 0, 0, 0.54)'
   },
+  gold: {
+      light: '#dfc253',
+      normal: '#b9972f'
+  },
   white: '#fff',
-  black: '#000'
+  black: '#000',
+  blue: '#1a4167'
 }
 
 export const fonts = {
@@ -62,5 +67,6 @@ export const dimensions = {
 }
 
 export const heights = {
-  header: 60,
+  header: 150,
+  navBar: 50
 }

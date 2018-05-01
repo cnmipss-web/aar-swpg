@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.1.1",
     "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0",
     "gatsby": "^1.9.223",
     "gatsby-link": "^1.6.38",
     "gatsby-plugin-canonical-urls": "^1.0.14",
@@ -46,6 +48,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
+    "reactstrap": "^5.0.0",
     "styled-components": "^3.1.6",
     "styled-normalize": "^4.0.0",
     "uuid": "^3.2.1"

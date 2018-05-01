@@ -1,7 +1,8 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 
-import '../styles/normalize'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'font-awesome/css/font-awesome.css';
 
 import Header from '../components/Header'
 import LayoutRoot from '../components/LayoutRoot'

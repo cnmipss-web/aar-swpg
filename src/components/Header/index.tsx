@@ -22,7 +22,6 @@ import { onEvent, media } from '../../styles/mixins';
 import Dropdown from './Dropdown';
 
 const StyledHeader = styled.header`
-  height: ${heights.header}px;
 `
 
 const StyledNavbar = styled(Navbar)`
@@ -37,6 +36,7 @@ const StyledNavbar = styled(Navbar)`
     min-height: ${heights.navBar}px;
     padding: 5px;
     width: auto;
+    height: auto;
     z-index: 100;
 `;
 
@@ -44,6 +44,7 @@ const StyledNavbarToggler = styled(NavbarToggler)`
     background-color: ${colors.gold.normal};
     color: ${colors.blue};
     margin-top: 0px;
+    margin-bottom: 5px;
     padding: 5px;
     width: 34px;
     height: 34px;
@@ -113,6 +114,13 @@ const NavbarHeader = styled.div`
     }
 `;
 
+const StyledImg = styled.img`
+    width: 100%;
+    height: auto;
+    min-height: 75px;
+    min-width: 400px;
+`;
+
 interface HeaderProps {
   title: string
 }
@@ -162,14 +170,14 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         console.log('State', this.state);
         return (
             <StyledHeader>
-                <div className="site-branding container-fluid">
+                <div className="site-branding container">
                     <div className="row">
-                        <div className="col-12 col-md-6 offset-md-3">
+                        <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                             <a href="/">
                                 <p className="sr-only">
                                     CNMI PSS District Website
                                 </p>
-                                <img
+                                <StyledImg
                                     src={this.headerImage}
                                     alt=""
                                 />
@@ -178,60 +186,60 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                     </div>
                 </div>
 
-            <StyledNavbar className="container-fluid">
-                <NavbarHeader
-                >
-                    <div />
-                    <StyledNavbarToggler
-                        onClick={this.toggle}
+                <StyledNavbar className="container-fluid">
+                    <NavbarHeader
                     >
-                        <span className="sr-only">
-                            Toggle navigation
-                        </span>
-                        <i className="fa fa-bars" aria-hidden="true" />
-                    </StyledNavbarToggler>
-                </NavbarHeader>
-                <StyledCollapse
-                    className="col-12 col-lg-10"
-                    isOpen={this.state.isOpen}
-                    navbar
-                >
-                    <div className="navbar-header">
-                        {/* <?php cnmi_search_form('nav'); ?> */}
-                    </div>
-                    <NavLinks role="menu" navbar>
-                        <NavItem>
-                            <a href="/news"> PSS News </a>
-                        </NavItem>
-                        <Dropdown
-                            navs={headerLinks}
-                            selected={'Students &amp; Parents'}
-                        />
-                        <Dropdown
-                            navs={headerLinks}
-                            selected="Employees"
-                        />
-                        <Dropdown
-                            navs={headerLinks}
-                            selected="Community"
-                        />
-                        <Dropdown
-                            navs={headerLinks}
-                            selected="District Information"
-                        />
-                        <Dropdown
-                            navs={headerLinks}
-                            selected="Public Reports"
-                        />
-                        {/* <?php cnmi_header_dropdown('Students & Parents'); ?> */}
-                        {/* <?php cnmi_header_dropdown('Employees'); ?> */}
-                        {/* <?php cnmi_header_dropdown('Community'); ?> */}
-                        {/* <?php cnmi_header_dropdown('District Information'); ?> */}
-                        {/* <?php cnmi_header_dropdown('Public Reports'); ?> */}
-                    </NavLinks>
-                </StyledCollapse>
-            </StyledNavbar>
-          </StyledHeader>
+                        <div />
+                        <StyledNavbarToggler
+                            onClick={this.toggle}
+                        >
+                            <span className="sr-only">
+                                Toggle navigation
+                            </span>
+                            <i className="fa fa-bars" aria-hidden="true" />
+                        </StyledNavbarToggler>
+                    </NavbarHeader>
+                    <StyledCollapse
+                        className="col-12 col-lg-10"
+                        isOpen={this.state.isOpen}
+                        navbar
+                    >
+                        <div className="navbar-header">
+                            {/* <?php cnmi_search_form('nav'); ?> */}
+                        </div>
+                        <NavLinks role="menu" navbar>
+                            <NavItem>
+                                <a href="/news"> PSS News </a>
+                            </NavItem>
+                            <Dropdown
+                                navs={headerLinks}
+                                selected={'Students &amp; Parents'}
+                            />
+                            <Dropdown
+                                navs={headerLinks}
+                                selected="Employees"
+                            />
+                            <Dropdown
+                                navs={headerLinks}
+                                selected="Community"
+                            />
+                            <Dropdown
+                                navs={headerLinks}
+                                selected="District Information"
+                            />
+                            <Dropdown
+                                navs={headerLinks}
+                                selected="Public Reports"
+                            />
+                            {/* <?php cnmi_header_dropdown('Students & Parents'); ?> */}
+                            {/* <?php cnmi_header_dropdown('Employees'); ?> */}
+                            {/* <?php cnmi_header_dropdown('Community'); ?> */}
+                            {/* <?php cnmi_header_dropdown('District Information'); ?> */}
+                            {/* <?php cnmi_header_dropdown('Public Reports'); ?> */}
+                        </NavLinks>
+                    </StyledCollapse>
+                </StyledNavbar>
+            </StyledHeader>
         );
     }
 

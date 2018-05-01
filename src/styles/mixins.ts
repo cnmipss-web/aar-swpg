@@ -37,7 +37,7 @@ export const media = {
     @media (min-width: ${getEmSize(1200)}em) {
       ${css(styles, ...interpolations)};
     }
-  `,
+  `
 }
 
 // event wrapper

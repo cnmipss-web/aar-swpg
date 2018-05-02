@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.css';
 import '../styles/normalize';
 
-import Header from '../components/Header'
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
 
@@ -34,6 +35,7 @@ const IndexLayout: React.SFC<WrapperProps> = ({ children, data }) => (
     <LayoutMain>
       {children()}
     </LayoutMain>
+    <Footer />
   </LayoutRoot>
 )
 

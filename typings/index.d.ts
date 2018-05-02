@@ -20,6 +20,85 @@ declare module '*.module.css' {
     export = cssModule
 }
 
+declare namespace GraphQLQuery {
+    interface IndexQueryResult {
+        site: {
+            siteMetadata: {
+                title: string
+            }
+        }
+
+        allMarkdownRemark: {
+            edges: MarkdownRemarkEdge[]
+        }
+
+        allAaMathOverallCSV: ActAspireOverallCSV
+        allAaMathCohort3YrCsv: ActAspireCohort3YrCSV
+        allAaMathIepCSV: ActAspireOverallCSV
+
+        allAaEnglishOverallCSV: ActAspireOverallCSV
+        allAaEnglishCohort3YrCsv: ActAspireCohort3YrCSV
+        allAaEnglishIepCSV: ActAspireOverallCSV
+
+        allAaReadingOverallCSV: ActAspireOverallCSV
+        allAaReadingCohort3YrCsv: ActAspireCohort3YrCSV
+        allAaReadingIepCSV: ActAspireOverallCSV
+
+        allAaScienceOverallCSV: ActAspireOverallCSV
+        allAaScienceCohort3YrCsv: ActAspireCohort3YrCSV
+        allAaScienceIepCSV: ActAspireOverallCSV
+
+        allAaWritingOverallCSV: ActAspireOverallCSV
+        allAaWritingCohort3YrCsv: ActAspireCohort3YrCSV
+        allAaWritingIepCSV: ActAspireOverallCSV
+    }
+
+    interface MarkdownRemarkEdge {
+        node: MarkdownRemarkNode
+    }
+
+    interface MarkdownRemarkNode {
+        frontmatter: {
+            title: string
+        }
+        html: string
+    }
+
+    interface ActAspireOverallCSV {
+        edges: ActAspireOverallCSVEdge[]
+    }
+
+    interface ActAspireOverallCSVEdge {
+        node: ActAspireOverallCSVNode
+    }
+
+    interface ActAspireOverallCSVNode {
+        field1: string,
+        field2: string,
+        field3: string,
+        field4: string,
+        field5: string,
+        field6: string,
+        field7: string,
+        field8: string,
+        field9: string,
+    }
+
+    interface ActAspireCohort3YrCSV {
+        edges: ActAspireCohort3YrCSVEdge[]
+    }
+
+    interface ActAspireCohort3YrCSVEdge {
+        node: ActAspireCohort3YrCSVNode
+    }
+
+    interface ActAspireCohort3YrCSVNode {
+        field1: string,
+        field2: string,
+        field3: string,
+        field4: string,
+    }
+}
 
 declare namespace Components {
     type ButtonProps = React.DetailedHTMLProps<ReactStrap.ButtonProps, HTMLButtonElement>;

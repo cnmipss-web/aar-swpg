@@ -20,6 +20,8 @@ import AAELLResults from '../components/Section/ActAspire/ELLResults';
 
 import NMCSubjectResults from '../components/Section/NMCPlacment/SubjectResults';
 
+import AccessibilityNotice from '../components/Footer/AccessibilityNotice';
+
 const StyledContainer = styled(Container)`
     background-color: white;
     border-radius: 2px;
@@ -85,6 +87,9 @@ export default ({data, context}) => (
                     </ResultsSection>
                 </Col>
             </Row>
+        </StyledContainer>
+        <StyledContainer>
+            <AccessibilityNotice data={data} />
         </StyledContainer>
     </Page>
 );

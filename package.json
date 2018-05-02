@@ -22,6 +22,7 @@
   "dependencies": {
     "@types/reactstrap": "^5.0.23",
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.1",
     "classnames": "^2.2.5",
     "font-awesome": "^4.7.0",
@@ -62,6 +63,8 @@
     "@types/react-dom": "^16.0.3",
     "@types/react-helmet": "^5.0.5",
     "@types/react-router-dom": "^4.2.3",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "gatsby-plugin-babel": "^1.0.0",
     "gh-pages": "^1.1.0",
     "rimraf": "^2.6.2",
     "tslint": "^5.9.1",

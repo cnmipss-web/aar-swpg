@@ -17,7 +17,7 @@ import {
 } from 'reactstrap';
 
 import { heights, dimensions, colors, breakpoints } from '../../styles/variables';
-import { onEvent, media } from '../../styles/mixins';
+import { onEvent, media, customTransition } from '../../styles/mixins';
 
 import Dropdown from './Dropdown';
 import Banner from './Banner';
@@ -77,21 +77,23 @@ const NavLinks = styled(Nav)`
     padding: 0px;
     width: 100%;
 
-    a {
+    a, a[role="button"] {
         color: white;
         cursor: pointer;
+        ${customTransition('color 0.5s')};
 
-        &:hover {
+        ${onEvent`
+            color: ${colors.gold.light};
             background-color: inherit;
             text-decoration: underline !important;
-        }
+        `}
     }
 
     li {
-        &:hover {
+        ${onEvent`
             background-color: inherit;
-        }
-        div {
+        `}
+        ul {
             background-color: ${colors.blue};
             color: white;
         }
@@ -148,7 +150,8 @@ interface HeaderState {
 
 class Header extends React.Component<HeaderProps, HeaderState> {
 
-    private domain = 'http://localhost:80';
+    // private domain = 'https://www.cnmipss.org/';
+    private domain = 'http://localhost.com:80/';
 
 
     constructor(props) {
@@ -169,7 +172,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     public render () {
         const { title } = this.props;
         const { headerLinks } = this.state;
-        console.log('State', this.state);
+        // console.log('State', this.state);
         return (
             <StyledHeader>
                 <Banner searchAction={`${this.domain}/`}/>

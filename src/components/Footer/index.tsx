@@ -42,7 +42,7 @@ const Footer = styled.footer`
         margin: 10px;
     }
 
-    .site-info {
+    div.site-info {
         background-color: ${colors.darkBlue};
         p {
             @include for-phone-only {
@@ -51,13 +51,13 @@ const Footer = styled.footer`
             white-space: normal;
         }
     }
-
-    .footer-center {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
 `;
+
+const DistrictContactInfo = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+`
 
 declare interface FooterState {
     districtOfficeContact: {
@@ -72,7 +72,8 @@ declare interface FooterState {
 
 export default class FullFooter extends React.Component<any, FooterState> {
 
-    private domain = 'http://localhost:80';
+    // private domain = 'https://www.cnmipss.org/';
+    private domain = 'http://localhost.com:80/';
 
     constructor(props) {
         super(props);
@@ -106,15 +107,7 @@ export default class FullFooter extends React.Component<any, FooterState> {
                     <Row>
                         <Col xs="12">
                             <h2>Contact District Office</h2>
-                            <div className="footer-center">
-                                {/* <?php
-                                $contact = new WP_Query(array(
-                                    'title' => 'District Office',
-                                    'post_type' => 'contact_info',
-                                ));
-                                cnmi_contact_info($contact->posts[0]);
-
-                                ?> */}
+                            <DistrictContactInfo>
                                 <p dangerouslySetInnerHTML={{__html: address}}/>
                                 <p>
                                     {telephone ? `Tel: ${telephone}` : ''}
@@ -125,7 +118,7 @@ export default class FullFooter extends React.Component<any, FooterState> {
 
                                     {email ? `Email: ${fax}` : ''}
                                 </p>
-                            </div>
+                            </DistrictContactInfo>
                         </Col>
                     </Row>
                 </Container>

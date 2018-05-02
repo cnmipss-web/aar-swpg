@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "none",
     "target": "es5",
     "jsx": "react",
     "lib": ["dom", "es2015", "es2016", "es2017", "esnext"],
@@ -13,8 +13,8 @@
     "removeComments": false,
     "preserveConstEnums": true,
     "typeRoots": [
-            "node_modules/@types",
-            "typings/",
+        "node_modules/@types",
+        "typings/",
     ],
   },
   "include": [

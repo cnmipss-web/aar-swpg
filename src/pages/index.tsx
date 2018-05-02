@@ -4,9 +4,9 @@ const uuidv4 = require('uuid/v4');
 
 import '../components/Section/graphqlQueries';
 
-import { dimensions, colors } from '../styles/variables'
+import { dimensions, colors } from '../styles/variables';
 
-import Page from '../components/Page'
+import Page from '../components/Page';
 import {
     Container,
     Row,
@@ -99,6 +99,7 @@ export const query = graphql`
         site {
             siteMetadata {
                 title
+                siteUrl
             }
         }
 

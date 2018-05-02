@@ -27,6 +27,18 @@ const StyledDropdown = styled(Dropdown)`
     justify-content: space-between;
     max-width: 200px;
     align-items: center;
+
+    a {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        i {
+            padding-left: 10px;
+        }
+    }
 `;
 
 class DropdownComponent extends React.Component<DropdownProps, DropdownState> {
@@ -39,17 +51,24 @@ class DropdownComponent extends React.Component<DropdownProps, DropdownState> {
         this.state = {
             dropdownOpen: false
         };
+
     }
 
     public render() {
-        const { navs, selected } = this.props;
+        const { selected, navs } = this.props;
+        const { dropdownOpen } = this.state;
+
         const matchingNavs = navs.filter(headerLinks =>
             headerLinks.navSection.name === selected
-        );
+        ).map(({navSection, pages }) => ({
+            navSection,
+            pages: pages.sort(this.sortNavLinks)
+        }));
+
         return (
             <NavItem>
                 <StyledDropdown
-                    isOpen={this.state.dropdownOpen}
+                    isOpen={dropdownOpen}
                     toggle={this.toggle}
                 >
                     <DropdownToggle
@@ -57,19 +76,28 @@ class DropdownComponent extends React.Component<DropdownProps, DropdownState> {
                         onClick={this.toggle}
                         data-toggle="dropdown"
                         role="button"
-                        aria-haspopup="true"
-                        aria-expanded={this.state.dropdownOpen}
+                        aria-haspopup={true}
+                        aria-expanded={dropdownOpen}
                     >
                         <span dangerouslySetInnerHTML={{__html: selected}} />
+                        <i className="fa fa-caret-down" />
                     </DropdownToggle>
-                    &nbsp;
-                    <i className="fa fa-caret-down" />
-                    <DropdownMenu>
+                    <DropdownMenu tag="ul">
                         {matchingNavs.length > 0 ? matchingNavs[0].pages.map(this.pageLink) : ''}
                     </DropdownMenu>
                 </StyledDropdown>
             </NavItem>
         );
+    }
+
+    private sortNavLinks(linkA, linkB): number {
+        if (linkA.menu_order < linkB.menu_order) {
+            return 1;
+        } else if (linkA.menu_order > linkB.menu_order) {
+            return -1
+        } else {
+            return 0;
+        }
     }
 
     private toggle() {
@@ -80,12 +108,12 @@ class DropdownComponent extends React.Component<DropdownProps, DropdownState> {
 
     private pageLink(page) {
         return (
-            <DropdownItem tag="li" key={uuidv4()}>
+            <li className="dropdown-item" key={uuidv4()}>
                 <a
                     href={page.link}
                     dangerouslySetInnerHTML={{__html: page.title.rendered}}
                 />
-            </DropdownItem>
+            </li>
         );
     }
 }

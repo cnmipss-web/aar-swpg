@@ -50,3 +50,8 @@ export const onEvent = (
     ${css(styles, ...interpolations)}
   }
 `
+
+export const customTransition = (transition: string, fn = 'ease', delay = 0 ) =>
+    `transition-delay:  ${delay}s;
+    transition-timing-function: ${fn};
+    transition: ${transition};`;

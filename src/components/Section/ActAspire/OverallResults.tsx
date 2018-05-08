@@ -39,4 +39,5 @@ export default ({ data }) => (
 
 const TableBox = styled.div`
     overflow: auto;
+    margin-bottom: 15px;
 `;

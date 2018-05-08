@@ -34,10 +34,8 @@ const ProficiencyBySchool: React.SFC<Props> = ({data, subject, grade}) => {
             <caption>
                 Act Aspire Results for {subject} by School for Grade {grade}
             </caption>
-            <thead>
-                {tableHeaders(firstHeaders, secondHeaders)}
-            </thead>
             <tbody>
+                {tableHeaders(firstHeaders, secondHeaders)}
                 {edges.reduce(subjectReducerFn(subject), [])
                     .slice(2)
                     .map(tableDataRow(dataCellFn))}

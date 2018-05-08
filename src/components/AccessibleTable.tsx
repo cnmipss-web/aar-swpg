@@ -8,12 +8,16 @@ import { colors } from '../styles/variables';
 export const StyledTable = styled.table`
 
     caption {
+        border: 1px solid #ccc;
         caption-side: top;
-        text-align: center;
+        text-align: left;
         font-family: serif;
         font-size: 1rem;
         font-weight: 500;
         color: inherit;
+        padding-left: 25px;
+        margin-bottom: -1px;
+        font-style: italic;
     }
 
     th[scope="col"] {

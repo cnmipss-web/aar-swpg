@@ -214,6 +214,202 @@ export const actAspireQuery = graphql`
                 }
             }
         }
+
+        allAaGrade3Csv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                    field10
+                    field11
+                    field12
+                    field13
+                    field14
+                    field15
+                    field16
+                    field17
+                    field18
+                    field19
+                    field20
+                    field21
+                }
+            }
+        }
+
+        allAaGrade4Csv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                    field10
+                    field11
+                    field12
+                    field13
+                    field14
+                    field15
+                    field16
+                    field17
+                    field18
+                    field19
+                    field20
+                    field21
+                }
+            }
+        }
+
+        allAaGrade5Csv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                    field10
+                    field11
+                    field12
+                    field13
+                    field14
+                    field15
+                    field16
+                    field17
+                    field18
+                    field19
+                    field20
+                    field21
+                }
+            }
+        }
+
+        allAaGrade6Csv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                    field10
+                    field11
+                    field12
+                    field13
+                    field14
+                    field15
+                    field16
+                    field17
+                }
+            }
+        }
+
+        allAaGrade7Csv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                    field10
+                    field11
+                    field12
+                    field13
+                    field14
+                    field15
+                    field16
+                    field17
+                }
+            }
+        }
+
+        allAaGrade8Csv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                    field10
+                    field11
+                    field12
+                    field13
+                    field14
+                    field15
+                    field16
+                    field17
+                }
+            }
+        }
+
+        allAaGrade9Csv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                    field10
+                    field11
+                    field12
+                    field13
+                }
+            }
+        }
+
+        allAaGrade10Csv {
+            edges {
+                node {
+                    field1
+                    field2
+                    field3
+                    field4
+                    field5
+                    field6
+                    field7
+                    field8
+                    field9
+                    field10
+                    field11
+                    field12
+                    field13
+                }
+            }
+        }
     }
 `;
 

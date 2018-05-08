@@ -63,7 +63,7 @@ export const HeaderRow = row => (
  * @returns {JSX.Element}
  */
 export function tableHeaders({ node: row }: Edge): JSX.Element {
-    const fields = Object.keys(row);
+    const fields = Object.keys(row).sort(fieldSort);
     return HeaderRow(fields.map(field => ({children: [row[field]]})));
 }
 
@@ -75,7 +75,7 @@ export function tableHeaders({ node: row }: Edge): JSX.Element {
  */
 export function tableDataRow(cellFn = defaultCellFn) {
     return ({ node: row}: Edge) => {
-        const fields = Object.keys(row);
+        const fields = Object.keys(row).sort(fieldSort);
         return <tr key={uuidv4()}>{fields.map(cellFn(row))}</tr>;
     }
 }
@@ -84,4 +84,17 @@ function defaultCellFn(rowData) {
     return (field: string, i: number) => (
         <td key={uuidv4()}>{rowData[field]}</td>
     );
+}
+
+function fieldSort(fieldA: string, fieldB: string): number {
+    const intA: number = getNum(fieldA);
+    const intB: number = getNum(fieldB);
+
+    if (intA < intB) return -1;
+    if (intB < intA) return 1;
+    return 0;
+}
+
+function getNum(str: string): number {
+    return parseInt(/field(\d+)/.exec(str)[1], 10);
 }

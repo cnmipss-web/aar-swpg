@@ -85,7 +85,6 @@ function subjectReducerFn(subject: string) {
     let found = false;
     let startIndex = 0;
     return (table, line: Edge, index) => {
-        console.log(subject, line.node.field1);
         if (re.test(line.node.field1)) {
             found = true;
             startIndex = index;

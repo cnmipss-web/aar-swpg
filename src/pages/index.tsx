@@ -30,12 +30,28 @@ const StyledContainer = styled(Container)`
 `;
 
 
-export default ({data, context}) => (
+export default ({
+    data,
+    data: {
+        site: {
+            siteMetadata: { title, year, pdfFile }
+        }
+    },
+    context}) => (
     <Page>
         <StyledContainer>
             <Row>
                 <Col>
-                    <h1>{data.site.siteMetadata.title}</h1>
+                    <h1>{title}</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col xs="12" md={{size: 10, offset: 1}}>
+                    <p>
+                        A PDF file containing the full report for the {year} Academic School Year
+                        may be downloaded from <a href={pdfFile}>
+                        {year} Academic Achievement Report PDF</a>.
+                    </p>
                 </Col>
             </Row>
             <Row>
@@ -100,6 +116,9 @@ export const query = graphql`
             siteMetadata {
                 title
                 siteUrl
+                year
+                pdfFile
+                siteDomain
             }
         }
 

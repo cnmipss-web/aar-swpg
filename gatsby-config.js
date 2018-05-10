@@ -7,9 +7,12 @@ const siteUrl = 'https://www.cnmipss.org/academic-achievement-reports/';
 module.exports = {
     pathPrefix: '/academic-achievement-reports/2017',
     siteMetadata: {
+        siteDomain: 'https://www.cnmipss.org',
         title: 'Academic Achievement Report SY 2016-2017',
         description: '',
         siteUrl,
+        year: '2016-2017',
+        pdfFile: 'https://www.cnmipss.org/cnmi-pss-academic-achievement-report_2016-2017/',
         author: {
             name: 'Tyler Collins',
             email: 'webmaster@cnmipss.org'

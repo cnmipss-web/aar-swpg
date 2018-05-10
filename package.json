@@ -1,7 +1,7 @@
 {
   "name": "aar-swpg",
   "description": "A static web page generator for publishing CNMI PSS Academic Achievement Reports in an accessible digital format",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "author": "Tyler Collins",
   "keywords": [

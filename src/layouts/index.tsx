@@ -17,6 +17,7 @@ interface WrapperProps {
       siteMetadata: {
         title: string
         description: string
+        siteDomain: string
       }
     }
   }
@@ -28,14 +29,16 @@ const IndexLayout: React.SFC<WrapperProps> = ({ children, data }) => (
       title={data.site.siteMetadata.title}
       meta={[
         { name: 'description', content: data.site.siteMetadata.description },
-        { name: 'keywords', content: 'gatsbyjs, gatsby, javascript, sample, something' }
+        { name: 'keywords', content: 'academic, achievement, act, aspire' }
       ]}
     />
-    <Header title={data.site.siteMetadata.title} />
+    <Header
+        title={data.site.siteMetadata.title}
+        domain={data.site.siteMetadata.siteDomain} />
     <LayoutMain>
       {children()}
     </LayoutMain>
-    <Footer />
+    <Footer domain={data.site.siteMetadata.siteDomain} />
   </LayoutRoot>
 )
 
@@ -47,6 +50,7 @@ export const query = graphql`
       siteMetadata {
         title
         description
+        siteDomain
       }
     }
   }

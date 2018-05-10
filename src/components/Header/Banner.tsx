@@ -11,7 +11,7 @@ import SearchForm from './Search';
 import { colors } from '../../styles/variables';
 import { media } from '../../styles/mixins';
 
-const headerImage = 'http://www.cnmipss.org/wp-content/uploads/2015/04/PSSMainBanner.jpg';
+const headerImage = '/wp-content/uploads/2015/04/PSSMainBanner.jpg';
 
 const StyledImg = styled.img`
     width: 100%;

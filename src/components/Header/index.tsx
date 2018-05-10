@@ -127,6 +127,7 @@ const NavbarHeader = styled.div`
 
 interface HeaderProps {
   title: string
+  domain: string
 }
 
 interface Nav {
@@ -150,9 +151,6 @@ interface HeaderState {
 
 class Header extends React.Component<HeaderProps, HeaderState> {
 
-    // private domain = 'https://www.cnmipss.org/';
-    private domain = 'http://localhost.com:80/';
-
 
     constructor(props) {
         super(props);
@@ -170,19 +168,19 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     }
 
     public render () {
-        const { title } = this.props;
+        const { title, domain } = this.props;
         const { headerLinks } = this.state;
         // console.log('State', this.state);
         return (
             <StyledHeader>
-                <Banner searchAction={`${this.domain}/`}/>
+                <Banner searchAction={`${domain}/`}/>
 
                 <StyledNavbar
                     className="container-fluid"
                 >
                     <NavbarHeader>
                         <SearchForm
-                            action={`${this.domain}/`}
+                            action={`${domain}/`}
                             location="nav"
                         />
                         <StyledNavbarToggler
@@ -245,7 +243,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     }
 
     private async fetchHeaderContent() {
-        const navSections: AxiosResponse<Nav[]> = await axios.get(`${this.domain}/wp-json/wp/v2/nav/`);
+        const navSections: AxiosResponse<Nav[]> = await axios.get(`${this.props.domain}/wp-json/wp/v2/nav/`);
 
         const headerLinks = await Promise.all(
             navSections.data.map(this.getPages)
@@ -256,7 +254,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
     private async getPages(navSection: Nav) {
         const pages: AxiosResponse<WPPage[]> = await axios.get(
-            `${this.domain}/wp-json/wp/v2/pages/?nav=${navSection.id}&status=publish&per_page=100`
+            `${this.props.domain}/wp-json/wp/v2/pages/?nav=${navSection.id}&status=publish&per_page=100`
         );
 
         return {

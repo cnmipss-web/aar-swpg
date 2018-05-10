@@ -73,7 +73,7 @@ declare interface FooterState {
 export default class FullFooter extends React.Component<any, FooterState> {
 
     // private domain = 'https://www.cnmipss.org/';
-    private domain = 'http://localhost.com:80/';
+    // private domain = 'http://localhost.com:80/';
 
     constructor(props) {
         super(props);
@@ -142,7 +142,7 @@ export default class FullFooter extends React.Component<any, FooterState> {
     }
 
     private async fetchContactInfo() {
-        const contactInfo = await axios.get(`${this.domain}/wp-json/wp/v2/contact_info/?search=district%20office&type=contact_info`);
+        const contactInfo = await axios.get(`${this.props.domain}/wp-json/wp/v2/contact_info/?search=district%20office&type=contact_info`);
 
         const districtOfficeContact = contactInfo.data.filter(post => post.type === 'contact_info')[0];
 

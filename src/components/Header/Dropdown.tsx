@@ -65,7 +65,7 @@ class DropdownComponent extends React.Component<DropdownProps, DropdownState> {
             pages: pages.sort(this.sortNavLinks)
         }));
 
-        return (
+        return matchingNavs.length > 0 ? (
             <NavItem>
                 <StyledDropdown
                     isOpen={dropdownOpen}
@@ -83,11 +83,11 @@ class DropdownComponent extends React.Component<DropdownProps, DropdownState> {
                         <i className="fa fa-caret-down" />
                     </DropdownToggle>
                     <DropdownMenu tag="ul">
-                        {matchingNavs.length > 0 ? matchingNavs[0].pages.map(this.pageLink) : ''}
+                        {matchingNavs[0].pages.map(this.pageLink)}
                     </DropdownMenu>
                 </StyledDropdown>
             </NavItem>
-        );
+        ) : (<div />);
     }
 
     private sortNavLinks(linkA, linkB): number {

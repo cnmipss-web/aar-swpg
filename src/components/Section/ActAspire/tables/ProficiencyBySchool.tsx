@@ -29,53 +29,91 @@ const ProficiencyBySchool: React.SFC<Props> = ({data, subject, grade}) => {
     const dataField = `allAaGrade${grade}Csv`;
     const { [dataField]: { edges } } = data;
     const [ firstHeaders, secondHeaders, ...rows ]: Edge[] = edges;
+    const tableId = uuidv4();
+
     return (
         <StyledTable>
             <caption>
                 Act Aspire Results for {subject} by School for Grade {grade}
             </caption>
             <tbody>
-                {tableHeaders(firstHeaders, secondHeaders)}
+                {tableHeaders(tableId)(firstHeaders, secondHeaders)}
                 {edges.reduce(subjectReducerFn(subject), [])
                     .slice(2)
-                    .map(tableDataRow(dataCellFn))}
+                    .map(tableDataRow(dataCellFn(tableId)))}
             </tbody>
         </StyledTable>
     );
 }
 
-function tableHeaders(firstHeaders: Edge, secondHeaders: Edge): JSX.Element[] {
-    const { node: firstRow } = firstHeaders;
-    const { node: secondRow } = secondHeaders;
-    const firstRowFields = Object.keys(firstRow).sort(fieldSort);
-    const secondRowFields = Object.keys(secondRow).sort(fieldSort);
+function tableHeaders(tableId: string) {
+    return (firstHeaders: Edge, secondHeaders: Edge): JSX.Element[] => {
+        const { node: firstRow } = firstHeaders;
+        const { node: secondRow } = secondHeaders;
+        const firstRowFields = Object.keys(firstRow).sort(fieldSort);
+        const secondRowFields = Object.keys(secondRow).sort(fieldSort);
 
-    return [
-        (
-            <tr>
-                <th scope="col" rowSpan={2}>Achievement Level</th>
-                {firstRowFields.slice(1)
-                    .filter(field => (firstRow[field].length > 0))
-                    .map(field => (<th scope="colgroup" colSpan={2}>{firstRow[field]}</th>
-                ))}
-            </tr>
-        ),
-        (
-            <tr>
-                {secondRowFields.slice(1)
-                    .map(field => (<th scope="col">{secondRow[field]}</th>))}
-            </tr>
-        )
-    ];
+        return [
+            (
+                <tr>
+                    <th id={`first-col-${tableId}`}scope="col" rowSpan={2}>Achievement Level</th>
+                    {firstRowFields.slice(1)
+                        .filter(field => (firstRow[field].length > 0))
+                        .map((field, i: number) => (
+                            <th
+                                id={`${i}-header1-${tableId}`}
+                                scope="colgroup"
+                                colSpan={2}
+                            >
+                                {firstRow[field]}
+                            </th>
+                    ))}
+                </tr>
+            ),
+            (
+                <tr>
+                    {secondRowFields.slice(1)
+                        .map((field, i) => (
+                            <th
+                                id={`${i}-header2-${tableId}`}
+                                scope="col"
+                            >
+                                {secondRow[field]}
+                            </th>
+                        ))}
+                </tr>
+            )
+        ];
+    }
 }
 
-function dataCellFn(rowData: Node) {
-    return (field: string, i: number) => {
-        const data = rowData[field];
-        if ( i === 0) {
-            return <RowHeader key={uuidv4()}>{data}</RowHeader>;
-        } else {
-            return <td key={uuidv4()}>{data}</td>;
+function dataCellFn(tableId: string) {
+    return (rowData: Node, rowNum: number) => {
+        return (field: string, i: number) => {
+            const rowHeader = `${rowNum}-rowheader-${tableId}`;
+            const data = rowData[field];
+            if ( i === 0) {
+            return (
+                <RowHeader
+                    id={rowHeader}
+                    headers={`first-col-${tableId}`}
+                    key={uuidv4()}
+                >
+                    {data}
+                </RowHeader>
+            );
+            } else {
+                const firstHeader =  `${Math.floor((i - 1) / 2)}-header1-${tableId}`;
+                const secondHeader = `${i - 1}-header2-${tableId}`;
+                return (
+                    <td
+                        headers={`${firstHeader} ${secondHeader} ${rowHeader}`}
+                        key={uuidv4()}
+                    >
+                        {data}
+                    </td>
+                );
+            }
         }
     }
 }

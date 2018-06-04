@@ -52,7 +52,7 @@ const SubjectOverallTable: React.SFC<Props> = ({data, subject, type}) => {
     );
 }
 
-function dataCellFn(rowData: Node) {
+function dataCellFn(rowData: Node, rowNum: number) {
     return (field: string, i: number) => {
         const data = rowData[field];
         if ( i === 0) {

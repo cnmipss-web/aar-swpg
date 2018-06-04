@@ -78,13 +78,13 @@ export function tableHeaders({ node: row }: Edge): JSX.Element {
  * @returns
  */
 export function tableDataRow(cellFn = defaultCellFn) {
-    return ({ node: row}: Edge) => {
+    return ({ node: row}: Edge, rowNum?: number) => {
         const fields = Object.keys(row).sort(fieldSort);
-        return <tr key={uuidv4()}>{fields.map(cellFn(row))}</tr>;
+        return <tr key={uuidv4()}>{fields.map(cellFn(row, rowNum))}</tr>;
     }
 }
 
-function defaultCellFn(rowData) {
+function defaultCellFn(rowData: any, rowNum: number) {
     return (field: string, i: number) => (
         <td key={uuidv4()}>{rowData[field]}</td>
     );
